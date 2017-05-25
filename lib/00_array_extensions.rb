@@ -65,6 +65,17 @@ end
 
 class Array
   def two_sum
+    arr = []
+    i = 0
+    while i < self.length
+      j = i + 1
+      while j < self.length
+        arr << [i, j] if self[i] + self[j] == 0
+        j += 1
+      end
+      i += 1
+    end
+    arr
   end
 end
 
@@ -77,6 +88,18 @@ end
 
 class Array
   def median
+    return self[0] if self.length == 1
+    return nil if self.empty?
+    if self.length.odd?
+      self.sort!
+      return self[self.length / 2]
+    else
+      self.sort!
+      return (self[self.length / 2] + self[self.length / 2 - 1]) / 2.0
+
+    end
+
+
   end
 end
 
@@ -129,6 +152,20 @@ end
 
 class Array
   def my_transpose
+    arr = []
+    self.length.times do
+      arr << []
+    end
+    i = 0
+    while i < arr.length
+      j = 0
+        while j < arr.length
+          arr[j] << self[i][j]
+          j += 1
+        end
+      i += 1
+    end
+    arr
   end
 end
 
