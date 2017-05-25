@@ -5,6 +5,8 @@
 
 class Array
   def sum
+    return 0 if self.empty?
+    self.reduce(:+)
   end
 end
 
@@ -16,9 +18,11 @@ end
 
 class Array
   def square!
+    self.map! { |el| el ** 2}
   end
 
   def square
+    self.map { |el| el ** 2}
   end
 end
 
@@ -36,6 +40,10 @@ end
 
 class Array
   def my_uniq
+    check = {}
+    self.map { |el| check[el] = true }
+
+    check.keys
   end
 end
 
