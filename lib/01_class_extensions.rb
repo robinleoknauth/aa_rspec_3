@@ -18,6 +18,13 @@
 
 class String
   def caesar(shift)
+    self.downcase!
+    result = []
+    self.each_char do |character|
+      index_of_character = (character.ord - "a".ord + shift) % 26
+      result << ("a".ord + index_of_character).chr
+    end
+    result.join
   end
 end
 
@@ -36,6 +43,13 @@ end
 
 class Hash
   def difference(other_hash)
+
+    result_hash = self.reject { |k, v| other_hash.keys.include?(k) }
+    other_hash.each do |k, v|
+      result_hash[k] = v if !self.keys.include?(k)
+
+    end
+    result_hash
   end
 end
 
@@ -98,6 +112,25 @@ end
 
 class Fixnum
   def stringify(base)
+    hex_digits = %w( 0 1 2 3 4 5 6 7 8 9 a b c d e f)
+    
+
+    if self == 0
+      result = "0"
+    else
+      result = ""
+    end
+    number = self
+
+    while number > 0
+
+      next_digit_index = number % base
+      result = hex_digits[next_digit_index] + result
+      number = (number - next_digit_index) / base
+
+    end
+
+    result
   end
 end
 

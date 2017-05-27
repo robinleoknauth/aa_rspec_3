@@ -159,10 +159,10 @@ class Array
     i = 0
     while i < arr.length
       j = 0
-        while j < arr.length
-          arr[j] << self[i][j]
-          j += 1
-        end
+      while j < arr.length
+        arr[j] << self[i][j]
+        j += 1
+      end
       i += 1
     end
     arr
